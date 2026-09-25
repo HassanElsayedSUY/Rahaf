@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رهف جمعة | Photography Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #0d0e12;
+            --card: #161820;
+            --accent: #e5a93b; /* لون ذهبي دافئ للعدسات */
+            --white: #f4f4f6;
+            --gray: #8e929a;
+            --line: rgba(255, 255, 255, 0.06);
+            --viewfinder: rgba(229, 169, 59, 0.3);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* تأثير شبكة الكاميرا في الخلفية */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 14, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            z-index: 99999;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        /* Social Menu */
+        .social {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 999;
+        }
+
+        .social a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            color: var(--gray);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: var(--accent);
+            color: #111;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(229, 169, 59, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 150px 8% 80px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-text .shutter-speed {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(229, 169, 59, 0.1);
+            color: var(--accent);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(229, 169, 59, 0.2);
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            line-height: 2;
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 38px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-main {
+            background: var(--accent);
+            color: #111;
+            box-shadow: 0 10px 20px rgba(229, 169, 59, 0.15);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px rgba(229, 169, 59, 0.25);
+        }
+
+        .btn-glass {
+            background: transparent;
+            border: 1px solid var(--line);
+            color: var(--white);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--white);
+        }
+
+        /* تصميم الـ Viewfinder لصورة الهيرو */
+        .hero-image {
+            position: relative;
+            padding: 15px;
+        }
+
+        /* زوايا الكاميرا المحيطة بالصورة */
+        .hero-image::before, .hero-image::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-color: var(--accent);
+            border-style: solid;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero-image::before {
+            top: 0; right: 0;
+            border-width: 3px 3px 0 0;
+        }
+        .hero-image::after {
+            bottom: 0; left: 0;
+            border-width: 0 0 3px 3px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(20%);
+            transition: 0.5s;
+        }
+
+        .hero-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 40px;
+            right: -30px;
+            background: var(--card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            z-index: 3;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .floating-card i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .floating-card h3 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .floating-card p {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 120px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .title i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Packages Section */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .package {
+            background: var(--card);
+            border: 1px solid var(--line);
+            padding: 45px 35px;
+            border-radius: 16px;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+            border-color: rgba(229, 169, 59, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .package-header {
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .package h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .package ul {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .package ul li {
+            margin: 18px 0;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .package ul li i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .package button {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--accent);
+            font-family: 'Cairo';
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .package button:hover {
+            background: var(--accent);
+            color: #111;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-card {
+            height: 440px;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--line);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13,14,18,0.95) 0%, rgba(13,14,18,0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay span {
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Album Modal (Darkroom Look) */
+        .album-modal {
+            position: fixed;
+            inset: 0;
+            background: #08090c;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 999999;
+            animation: albumFade 0.4s ease;
+        }
+
+        .album-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+        }
+
+        .album-image-box {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid var(--line);
+        }
+
+        /* زوايا الـ Viewfinder جوه المودال لشعور الكاميرا الاحترافية */
+        .album-image-box::before {
+            content: '[ FOCUS ]';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-family: monospace;
+            z-index: 2;
+        }
+
+        .album-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .album-overlay {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .album-counter {
+            color: #fff;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            font-family: monospace;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            color: #fff;
+            font-family: 'Cairo';
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: #111;
+        }
+
+        .album-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .album-controls button {
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(22, 24, 32, 0.9);
+            border: 1px solid var(--line);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            pointer-events: auto;
+        }
+
+        .album-controls button:hover {
+            background: var(--accent);
+            color: #111;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .thumbnails img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .thumbnails img:hover,
+        .thumbnails img.active {
+            opacity: 1;
+            border-color: var(--accent);
+        }
+
+        /* Booking Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 14, 18, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 999999;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            position: relative;
+            animation: popup 0.4s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: var(--accent);
+        }
+
+        .modal-box h2 {
+            margin-bottom: 25px;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        .input input,
+        .input textarea {
+            width: 100%;
+            padding: 16px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            outline: none;
+            color: #fff;
+            font-family: 'Cairo';
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .input input:focus,
+        .input textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .send {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #111;
+            font-family: 'Cairo';
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(229, 169, 59, 0.15);
+        }
+
+        .send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(229, 169, 59, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            background: #090a0d;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 950px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding-top: 120px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-image img {
+                height: 450px;
+            }
+
+            .floating-card {
+                right: 0;
+                bottom: -20px;
+            }
+
+            .links {
+                display: none;
+            }
+
+            .social {
+                bottom: 20px;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popup {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes albumFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-camera"></i> رهف <span>جمعة</span>
+        </div>
+        <div class="links">
+            <a href="#"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#gallery"><i class="fa-solid fa-images"></i> ألبوماتنا</a>
+            <a href="#packages"><i class="fa-solid fa-tags"></i> الباكدجات</a>
+        </div>
+    </nav>
+
+    <div class="social">
+        <a href="https://www.instagram.com/rahaf_gomaa_ph?igsh=cmRqcGJ2MHRuejF6" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/rahaf.gomaa.33?mibextid=ZbWKwL" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/+201029458933" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="shutter-speed"><i class="fa-solid fa-sliders"></i> SHUTTERSPEED AUTO</span>
+            <h1>نُخلّد أجمل<br>لحظات حياتك</h1>
+            <p> تصوير  لكل مناسباتكم السعيدة: أفراح، خطوبة، كتب كتاب، سيشن خارجي، أعياد ميلاد، وحفلات تخرج بأعلى جودة .</p>
+            <div class="hero-btns">
+                <a href="#packages" class="btn btn-main">احجز دلوقت</a>
+                <a href="#gallery" class="btn btn-glass">اتفرج على الشغل 🖼️</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400">
+            <div class="floating-card">
+                <i class="fa-solid fa-compact-disc fa-spin"></i>
+                <div>
+                    <h3>القصص السينمائية</h3>
+                    <p>جودة وتفاصيل لا تُنسى</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages">
+        <div class="title">
+            <i class="fa-solid fa-gavel"></i>
+            <h2>باكدجات التصوير</h2>
+            <p>اختار الباكدج المناسب ليك أو اختار باكدج مخصص واكتب تفاصيله بنفسك </p>
+        </div>
+
+        <div class="packages-grid">
+            <div class="package">
+                <div class="package-header">
+                    <h3>باكدج الزفاف</h3>
+                    <div class="price">3500ج <span>كامل</span></div>
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> عدد صور مفتوح ومصحح بالكامل</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ألبوم فاخر مقاس 50*30</li>
+                    <li><i class="fa-solid fa-circle-check"></i> تابلوه حائط هدايا مقاس 50*30</li>
+                </ul>
+                <button onclick="openModal('باكدج الزفاف')">احجز الباكدج</button>
+            </div>
+
+            <div class="package">
+                <div class="package-header">
+                    <h3>باكدج الفرح المتكامل</h3>
+                    <div class="price">4500ج <span>كامل</span></div>
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> عدد صور مفتوح جودة عالية</li>
+                    <li><i class="fa-solid fa-circle-check"></i> فيديو برومو احترافي + ريلزات شورتس</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ألبوم VIP مقاس 60*40</li>
+                    <li><i class="fa-solid fa-circle-check"></i> تابلوه كبير مقاس 60*40</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 20 كرت طباعة ديجيتال تذكاري</li>
+                </ul>
+                <button onclick="openModal('باكدج الفرح المتكامل')">احجز الباكدج</button>
+            </div>
+
+            <div class="package">
+                <div class="package-header">
+                    <h3>باكدج مخصص</h3>
+                    <div class="price">1300ج <span>+</span></div>
+                </div>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i>إضغط على الحجز واكتب تفاصيل الباكدج بنفسك </li>
+                </ul>
+                <button onclick="openModal('تصوير قاعة وخدمات إضافية')">حجز الباكدج </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="title">
+            <i class="fa-solid fa-film"></i>
+            <h2>ألبومات التصوير</h2>
+            <p>اضغط على الألبوم واتفرج على الشغل 👀🖼️</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card" onclick="openAlbum(0)">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000">
+                <div class="gallery-overlay">
+                    <h3>Wedding Album</h3>
+                    <span><i class="fa-solid fa-eye"></i> استعراض الصور</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openAlbum(1)">
+                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000">
+                <div class="gallery-overlay">
+                    <h3>Engagement Album</h3>
+                    <span><i class="fa-solid fa-eye"></i> استعراض الصور</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openAlbum(2)">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000">
+                <div class="gallery-overlay">
+                    <h3>Outdoor Album</h3>
+                    <span><i class="fa-solid fa-eye"></i> استعراض الصور</span>
+                </div>
+            </div>
+
+            <div class="gallery-card" onclick="openAlbum(3)">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000">
+                <div class="gallery-overlay">
+                    <h3>Katb Ketab</h3>
+                    <span><i class="fa-solid fa-eye"></i> استعراض الصور</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="album-modal" id="albumModal">
+        <div class="album-container">
+            <button class="back-btn" onclick="closeAlbum()">
+                <i class="fa-solid fa-arrow-right"></i> رجوع للمعرض
+            </button>
+            <div class="album-image-box">
+                <img id="albumImage" src="">
+                <div class="album-overlay">
+                    <div class="album-counter" id="albumCounter">1 / 4</div>
+                </div>
+            </div>
+            <div class="album-controls">
+                <button onclick="prevImage()"><i class="fa-solid fa-chevron-right"></i></button>
+                <button onclick="nextImage()"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+            <div class="thumbnails" id="thumbnails"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <div class="close" onclick="closeModal()">×</div>
+            <h2>تأكيد بيانات الحجز</h2>
+            <form id="bookingForm">
+                <div class="input">
+                    <input type="text" id="name" placeholder="الاسم بالكامل" required>
+                </div>
+                <div class="input">
+                    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="input">
+                    <input type="text" id="address" placeholder="العنوان" required>
+                </div>
+                <div class="input">
+                    <input type="text" id="location" placeholder="مكان وتفاصيل قاعة التصوير" required>
+                </div>
+                <div class="input">
+                    <input type="text" id="date" placeholder="تاريخ المناسبة المميز" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" required>
+                </div>
+                <div class="input">
+                    <textarea id="details" rows="3" placeholder="أي تفاصيل أو طلبات إضافية حابب تضيفها..."></textarea>
+                </div>
+                <button class="send"><i class="fab fa-whatsapp"></i> تأكيد الحجز وإرسال عبر واتساب</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <h2>رهف جمعة</h2>
+        <p>كل الحقوق محفوظة © 2026 - نلتقط اللحظة لتسجيل الذكرى</p>
+    </footer>
+
+    <script>
+        /* Booking Modal Logic */
+        let selectedPackage = "";
+
+        function openModal(name) {
+            selectedPackage = name;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            if (e.target.id === "modal") {
+                closeModal();
+            }
+        }
+
+        /* WhatsApp Integration Fix */
+        document.getElementById("bookingForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+            const location = document.getElementById("location").value;
+            const date = document.getElementById("date").value;
+            const details = document.getElementById("details").value;
+
+            const message = `مرحباً رهف 🌸\n\nأريد حجز: ${selectedPackage}\n\nالاسم:\n${name}\n\nرقم التواصل:\n${phone}\n\nالعنوان:\n${address}\n\nمكان التصوير:\n${location}\n\nالتاريخ:\n${date}\n\nتفاصيل إضافية:\n${details}`;
+
+            // تعديل رقم الهاتف لرقم رهف الحقيقي الفعلي المسجل في روابط السوشيال ميديا بالموقع
+            window.open(`https://wa.me/201029458933?text=${encodeURIComponent(message)}`, "_blank");
+        });
+
+        /* Albums Data & Slider Logic */
+        const albums = [
+            [
+                "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400",
+                "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400",
+                "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400",
+                "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1400"
+            ],
+            [
+                "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400",
+                "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400",
+                "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400"
+            ],
+            [
+                "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1400",
+                "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400",
+                "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400"
+            ],
+            [
+                "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400",
+                "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1400",
+                "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400"
+            ]
+        ];
+
+        let currentAlbum = [];
+        let currentIndex = 0;
+
+        function openAlbum(index) {
+            currentAlbum = albums[index];
+            currentIndex = 0;
+            document.getElementById("albumModal").style.display = "flex";
+            updateAlbum();
+            createThumbs();
+        }
+
+        function closeAlbum() {
+            document.getElementById("albumModal").style.display = "none";
+        }
+
+        function updateAlbum() {
+            document.getElementById("albumImage").src = currentAlbum[currentIndex];
+            document.getElementById("albumCounter").innerHTML = `${currentIndex + 1} / ${currentAlbum.length}`;
+
+            document.querySelectorAll(".thumbnails img").forEach((img, i) => {
+                img.classList.remove("active");
+                if (i === currentIndex) {
+                    img.classList.add("active");
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex++;
+            if (currentIndex >= currentAlbum.length) {
+                currentIndex = 0;
+            }
+            updateAlbum();
+        }
+
+        function prevImage() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = currentAlbum.length - 1;
+            }
+            updateAlbum();
+        }
+
+        function createThumbs() {
+            const thumbs = document.getElementById("thumbnails");
+            thumbs.innerHTML = "";
+
+            currentAlbum.forEach((img, index) => {
+                const image = document.createElement("img");
+                image.src = img;
+                if (index === currentIndex) {
+                    image.classList.add("active");
+                }
+                image.onclick = () => {
+                    currentIndex = index;
+                    updateAlbum();
+                };
+                thumbs.appendChild(image);
+            });
+        }
+    </script>
+</body>
+</html>
